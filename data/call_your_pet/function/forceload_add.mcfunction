@@ -1,0 +1,1 @@
+$execute in $(tp_dim) run forceload add $(tp_x) $(tp_z)

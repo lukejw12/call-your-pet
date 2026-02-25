@@ -1,0 +1,1 @@
+$data modify storage call_your_pet:owners "$(temp_pet_id)" set from storage call_your_pet:root temp_owner_uuid

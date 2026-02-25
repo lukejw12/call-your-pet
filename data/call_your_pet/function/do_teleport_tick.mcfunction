@@ -1,0 +1,1 @@
+function call_your_pet:do_teleport_macro with storage call_your_pet:root

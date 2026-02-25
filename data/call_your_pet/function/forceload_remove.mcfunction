@@ -1,0 +1,1 @@
+$execute in $(tp_dim) run forceload remove $(tp_x) $(tp_z)

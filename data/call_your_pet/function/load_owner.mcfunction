@@ -1,0 +1,1 @@
+$data modify storage call_your_pet:root loaded_owner set from storage call_your_pet:owners "$(check_pet_id)"

@@ -1,0 +1,1 @@
+$execute in $(tp_dim) as @e[tag=cyp.registered] if score @s cyp.pet_id = #call_pet_id cyp.temp in $(player_dim) run tp @s $(player_x) $(player_y) $(player_z)

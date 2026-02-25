@@ -1,0 +1,8 @@
+{
+  "function": "minecraft:set_lore",
+  "lore": [
+    {"text": "Bound to ", "color": "gray", "italic": false, "extra": [{"selector": "@s"}]}
+  ],
+  "entity": "this",
+  "mode": "replace_all"
+}

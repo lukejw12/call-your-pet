@@ -1,0 +1,42 @@
+{
+  "pack": {
+    "min_format": [80,0],
+    "max_format": [999,0],
+
+    "pack_format": 80,
+    "supported_formats": [80,999],
+    "description": [
+      {
+        "text": "\"Call Your Dog\" (callyourdog)"
+      },
+      "\n",
+      {
+        "text": "Easily call (whistle) your dog with a goat horn to teleport it to you",
+        "color": "#aaaaaa"
+      },
+      "\n\n",
+      {
+        "text": "Version "
+      },
+      {
+        "text": "1.4.0",
+        "color": "#55ff55"
+      },
+      {
+        "text": " for Minecraft "
+      },
+      {
+        "text": "1.21.6+",
+        "color": "#55ff55"
+      },
+      "\n",
+      {
+        "text": "by "
+      },
+      {
+        "text": "Jodek",
+        "color": "#ffff55"
+      }
+    ]
+  }
+}
