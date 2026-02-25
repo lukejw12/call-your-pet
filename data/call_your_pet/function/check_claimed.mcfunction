@@ -1,10 +1,12 @@
 scoreboard players set #cyp.claim_fail cyp.temp 0
 
-execute store result storage call_your_pet:root check_pet_id int 1 run scoreboard players get @e[tag=cyp.target,limit=1] cyp.pet_id
-
 execute unless entity @e[tag=cyp.target,tag=cyp.registered] run return 0
 
+execute store result storage call_your_pet:root check_pet_id int 1 run scoreboard players get @e[tag=cyp.target,limit=1] cyp.pet_id
+
 function call_your_pet:load_owner with storage call_your_pet:root
+
+execute unless data storage call_your_pet:root loaded_owner run return 0
 
 data modify storage call_your_pet:root claim_check set from entity @s UUID
 execute store success score #cyp.claim_check cyp.temp run data modify storage call_your_pet:root claim_check set from storage call_your_pet:root loaded_owner

@@ -10,5 +10,6 @@ scoreboard objectives add cyp.pos_x dummy
 scoreboard objectives add cyp.pos_z dummy
 scoreboard objectives add cyp.ray_steps dummy
 scoreboard objectives add cyp.stare_timer dummy
+scoreboard objectives add cyp.msg_shown dummy
 
 scoreboard players add #next cyp.next_id 0

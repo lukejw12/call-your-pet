@@ -1,3 +1,6 @@
+scoreboard players set #cyp.owner_fail cyp.temp 0
+scoreboard players set #cyp.claim_fail cyp.temp 0
+
 execute if entity @s[nbt={SelectedItem:{components:{"minecraft:custom_data":{call_your_pet:{}}}}}] run scoreboard players set @s cyp.stare_timer 0
 execute if entity @s[nbt={SelectedItem:{components:{"minecraft:custom_data":{call_your_pet:{}}}}}] run return 0
 
@@ -14,18 +17,20 @@ execute unless data entity @e[tag=cyp.target,limit=1] CustomName run return 0
 
 execute if entity @e[tag=cyp.target,type=#call_your_pet:has_owner,limit=1] run function call_your_pet:check_owner
 execute if score #cyp.owner_fail cyp.temp matches 1 run scoreboard players set @s cyp.stare_timer 0
-execute if score #cyp.owner_fail cyp.temp matches 1 run tellraw @s ["",{"text":"[Call Your Pet]","color":"gold"}," ",{"text":"This pet belongs to someone else!","color":"red"}]
+execute if score #cyp.owner_fail cyp.temp matches 1 if score @s cyp.msg_shown matches 0 run tellraw @s ["",{"text":"[Call Your Pet]","color":"gold"}," ",{"text":"This pet belongs to someone else!","color":"red"}]
+execute if score #cyp.owner_fail cyp.temp matches 1 run scoreboard players set @s cyp.msg_shown 1
 execute if score #cyp.owner_fail cyp.temp matches 1 run tag @e remove cyp.target
 execute if score #cyp.owner_fail cyp.temp matches 1 run return 0
 
 execute if entity @e[tag=cyp.target,type=minecraft:iron_golem,limit=1,nbt={PlayerCreated:0b}] run scoreboard players set @s cyp.stare_timer 0
-execute if entity @e[tag=cyp.target,type=minecraft:iron_golem,limit=1,nbt={PlayerCreated:0b}] run tellraw @s ["",{"text":"[Call Your Pet]","color":"gold"}," ",{"text":"This iron golem was not player-built!","color":"red"}]
-execute if entity @e[tag=cyp.target,type=minecraft:iron_golem,limit=1,nbt={PlayerCreated:0b}] run tag @e remove cyp.target
-execute if entity @e[tag=cyp.target,type=minecraft:iron_golem,limit=1,nbt={PlayerCreated:0b}] run return 0
+execute if entity @e[tag=cyp.target,type=minecraft:iron_golem,limit=1,nbt={PlayerCreated:0b}] if score @s cyp.msg_shown matches 0 run tellraw @s ["",{"text":"[Call Your Pet]","color":"gold"}," ",{"text":"This iron golem was not player-built!","color":"red"}]
+execute if entity @e[tag=cyp.target,type=minecraft:iron_golem,limit=1,nbt={PlayerCreated:0b}] run scoreboard players set @s cyp.msg_shown 1
+execute if entity @e[tag=cyp.target,type=minecraft:iron_golem,limit=1,nbt={PlayerCreated:0b}] run return run tag @e remove cyp.target
 
 execute if entity @e[tag=cyp.target,tag=cyp.registered,limit=1] run function call_your_pet:check_claimed
 execute if score #cyp.claim_fail cyp.temp matches 1 run scoreboard players set @s cyp.stare_timer 0
-execute if score #cyp.claim_fail cyp.temp matches 1 run tellraw @s ["",{"text":"[Call Your Pet]","color":"gold"}," ",{"text":"This pet is already claimed by another player!","color":"red"}]
+execute if score #cyp.claim_fail cyp.temp matches 1 if score @s cyp.msg_shown matches 0 run tellraw @s ["",{"text":"[Call Your Pet]","color":"gold"}," ",{"text":"This pet is already claimed by another player!","color":"red"}]
+execute if score #cyp.claim_fail cyp.temp matches 1 run scoreboard players set @s cyp.msg_shown 1
 execute if score #cyp.claim_fail cyp.temp matches 1 run tag @e remove cyp.target
 execute if score #cyp.claim_fail cyp.temp matches 1 run return 0
 
