@@ -4,7 +4,7 @@ execute unless entity @e[tag=cyp.target,tag=cyp.registered] run return 0
 
 execute store result storage call_your_pet:root check_pet_id int 1 run scoreboard players get @e[tag=cyp.target,limit=1] cyp.pet_id
 
-function call_your_pet:load_owner with storage call_your_pet:root
+function call_your_pet:registration/load_owner with storage call_your_pet:root
 
 execute unless data storage call_your_pet:root loaded_owner run return 0
 

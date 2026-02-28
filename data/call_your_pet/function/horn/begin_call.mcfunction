@@ -17,5 +17,5 @@ execute store result storage call_your_pet:root player_x int 1 run data get enti
 execute store result storage call_your_pet:root player_y int 1 run data get entity @s Pos[1]
 execute store result storage call_your_pet:root player_z int 1 run data get entity @s Pos[2]
 
-function call_your_pet:load_pet_position with storage call_your_pet:root
-function call_your_pet:forceload_add with storage call_your_pet:root
+function call_your_pet:horn/load_pet_position with storage call_your_pet:root
+function call_your_pet:horn/forceload_add with storage call_your_pet:root

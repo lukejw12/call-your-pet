@@ -7,16 +7,16 @@ tag @e[tag=cyp.target,limit=1] add cyp.registered
 execute store result storage call_your_pet:root temp_pet_id int 1 run scoreboard players get @e[tag=cyp.target,limit=1] cyp.pet_id
 
 data modify storage call_your_pet:root temp_owner_uuid set from entity @s UUID
-function call_your_pet:save_owner with storage call_your_pet:root
+function call_your_pet:registration/save_owner with storage call_your_pet:root
 
 data remove storage call_your_pet:root temp_pet_id
 data remove storage call_your_pet:root temp_owner_uuid
 
-execute as @e[tag=cyp.target,limit=1] at @s run function call_your_pet:save_position
+execute as @e[tag=cyp.target,limit=1] at @s run function call_your_pet:position/save_position
 
 execute store result storage call_your_pet:root save_id int 1 run scoreboard players get @e[tag=cyp.target,limit=1] cyp.pet_id
 data modify storage call_your_pet:root save_dim set from entity @s Dimension
-function call_your_pet:save_dim_to_storage with storage call_your_pet:root
+function call_your_pet:position/save_dim_to_storage with storage call_your_pet:root
 
 summon item_display ~ ~ ~ {Tags:["cyp.temp_item"]}
 

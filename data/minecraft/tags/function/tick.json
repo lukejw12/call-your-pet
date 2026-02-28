@@ -1,5 +1,5 @@
 {
   "values": [
-    "call_your_pet:main"
+    "call_your_pet:core/main"
   ]
 }
