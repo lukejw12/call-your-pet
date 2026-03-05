@@ -12,6 +12,12 @@ data remove storage call_your_pet:root uuid_check
 execute store result storage call_your_pet:root call_id int 1 run data get entity @s SelectedItem.components."minecraft:custom_data".call_your_pet.pet_id
 execute store result score #call_pet_id cyp.temp run data get entity @s SelectedItem.components."minecraft:custom_data".call_your_pet.pet_id
 
+scoreboard players set #riding_pet cyp.temp 0
+execute on vehicle run scoreboard players operation #riding_pet cyp.temp = @s cyp.pet_id
+execute if score #riding_pet cyp.temp matches 1.. if score #riding_pet cyp.temp = #call_pet_id cyp.temp run tellraw @s ["",{"text":"[Call Your Pet]","color":"gold"}," ",{"text":"You can't call a pet you're currently riding!","color":"red"}]
+execute if score #riding_pet cyp.temp matches 1.. if score #riding_pet cyp.temp = #call_pet_id cyp.temp run tag @s remove cyp.calling
+execute if score #riding_pet cyp.temp matches 1.. if score #riding_pet cyp.temp = #call_pet_id cyp.temp run return 0
+
 data modify storage call_your_pet:root player_dim set from entity @s Dimension
 execute store result storage call_your_pet:root player_x int 1 run data get entity @s Pos[0]
 execute store result storage call_your_pet:root player_y int 1 run data get entity @s Pos[1]
